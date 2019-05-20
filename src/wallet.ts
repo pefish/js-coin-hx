@@ -120,9 +120,12 @@ export default class Wallet {
 
     tr.add_type_operation(`transfer`, operation)
     tr.set_expire_seconds(60)
-    // tr.set_required_fees(assetId)
     tr.add_signer(privKey, pubkey)
-    await tr.finalize()
+
+    const blockchainInfo = (await this.callRpc(`get_object`, ['2.1.0']))[0]
+    tr.ref_block_num = blockchainInfo['head_block_number'] & 0xFFFF
+    tr.ref_block_prefix = new Buffer(blockchainInfo['head_block_id'], 'hex').readUInt32LE(4)
+    tr.tr_buffer = ops.transaction.toBuffer(tr)
     tr.sign()
 
     const txObj = ops.signed_transaction.toObject(tr)

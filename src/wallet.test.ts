@@ -14,7 +14,6 @@ describe('WalletHelper', () => {
 
   before(async () => {
     helper = new Wallet()
-    await helper.connectWs(`ws://35.194.244.95:9991`)
     helper.setRpcUrl(`http://35.194.244.95:9992`)
   })
 
@@ -43,7 +42,9 @@ describe('WalletHelper', () => {
 
   it('callDbApi', async () => {
     try {
+      await helper.connectWs(`ws://35.194.244.95:9991`)
       const result = await helper.callDbApi(`get_block`, [3039651])
+      await helper.closeWs()
       // global.logger.error('result', JSON.stringify(result))
       assert.strictEqual(result[`previous`], `002e61a2051ef07b906247e478128c1c42e3a8c2`)
     } catch (err) {
