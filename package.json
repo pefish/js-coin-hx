@@ -1,6 +1,6 @@
 {
   "name": "js-coin-hx",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "hx tool of js",
   "keywords": [
     "common",
@@ -22,7 +22,8 @@
   "scripts": {
     "build": "tsc && yarn tslint",
     "test": "mocha --timeout 6000 --require ts-node/register tests/*.test.js",
-    "tslint": "tslint -c tslint.json -p tsconfig.json"
+    "tslint": "tslint -c tslint.json -p tsconfig.json",
+    "prepublish": "yarn build"
   },
   "devDependencies": {
     "@types/chai": "^4.1.7",
@@ -33,7 +34,9 @@
     "typescript": "^3.4.5"
   },
   "dependencies": {
-    "hxjs": "^1.0.2",
+    "bitsharesjs-ws": "^1.5.5",
+    "@pefish/hxjs": "^1.0.2",
+    "js-httprequest": "^0.0.4",
     "js-node-assist": "^0.5.8",
     "p-js-error": "^0.0.4"
   }
