@@ -14,7 +14,7 @@ describe('WalletHelper', () => {
 
   before(async () => {
     helper = new Wallet()
-    helper.setRpcUrl(`http://35.194.244.95:9992`)
+    helper.initRpc(`http://35.194.244.95:9992`)
   })
 
   it('getAllBySeedAndIndex', async () => {
@@ -42,9 +42,9 @@ describe('WalletHelper', () => {
 
   it('callDbApi', async () => {
     try {
-      await helper.connectWs(`ws://35.194.244.95:9991`)
-      const result = await helper.callDbApi(`get_block`, [3039651])
-      await helper.closeWs()
+      await helper.initWs(`ws://35.194.244.95:9991`)
+      const result = await helper.ws.callDbApi(`get_block`, [3039651])
+      await helper.ws.close()
       // global.logger.error('result', JSON.stringify(result))
       assert.strictEqual(result[`previous`], `002e61a2051ef07b906247e478128c1c42e3a8c2`)
     } catch (err) {
@@ -55,9 +55,9 @@ describe('WalletHelper', () => {
 
   it('listTransactions', async () => {
     try {
-      const result = await helper.listTransactions(9030000)
+      const result = await helper.rpc.listTransactions(3063330)
       // global.logger.error('result', result)
-      assert.strictEqual(result.length === 0, true)
+      assert.strictEqual(result.length > 0, true)
     } catch (err) {
       global.logger.error(err)
       assert.throws(() => {}, err)
@@ -66,9 +66,53 @@ describe('WalletHelper', () => {
 
   it('callRpc', async () => {
     try {
-      const result = await helper.callRpc(`get_transaction`, [`f4ac51bd730f0949dbf502696ee7857a4ae58b81`])
+      const result = await helper.rpc.callRpc(`get_transaction`, [`f4ac51bd730f0949dbf502696ee7857a4ae58b81`])
       // global.logger.error('result', JSON.stringify(result))
       assert.strictEqual(result[`trxid`], `f4ac51bd730f0949dbf502696ee7857a4ae58b81`)
+    } catch (err) {
+      global.logger.error(err)
+      assert.throws(() => {}, err)
+    }
+  })
+
+  it('getAddressBalance', async () => {
+    try {
+      const result = await helper.rpc.getAddressBalance(`HXNXic6fbjpohL8Pe84xha8CUYjGy6dXB97N`, `1.3.0`)
+      // global.logger.error('result', JSON.stringify(result))
+      assert.strictEqual(result.gt_(0), true)
+    } catch (err) {
+      global.logger.error(err)
+      assert.throws(() => {}, err)
+    }
+  })
+
+  it('getAssetInfo', async () => {
+    try {
+      const result = await helper.rpc.getAssetInfo(`HX`)
+      // global.logger.error('result', JSON.stringify(result))
+      assert.strictEqual(result[`id`], `1.3.0`)
+    } catch (err) {
+      global.logger.error(err)
+      assert.throws(() => {}, err)
+    }
+  })
+
+  it('getTransaction', async () => {
+    try {
+      const result = await helper.rpc.getTransaction(`b34b4dfb854f310645dba6114ea04a4e30ab56f9`)
+      global.logger.error('result', JSON.stringify(result))
+      // assert.strictEqual(result[`id`], `1.3.0`)
+    } catch (err) {
+      global.logger.error(err)
+      assert.throws(() => {}, err)
+    }
+  })
+
+  it('decodeMemo', async () => {
+    try {
+      const result = await helper.decodeMemo(`6e6968616f`)
+      // global.logger.error('result', JSON.stringify(result))
+      assert.strictEqual(result, `nihao`)
     } catch (err) {
       global.logger.error(err)
       assert.throws(() => {}, err)
@@ -81,12 +125,12 @@ describe('WalletHelper', () => {
         `5JBAVhG6tGSnF8nKXQKXFfTFANAS9L4hVnv4kyVuyj3zieJPyVj`,
         `HXNXic6fbjpohL8Pe84xha8CUYjGy6dXB97N`,
         `10000`,
-        `HX`,
+        `1.3.0`,
         `nihao`,
       )
       global.logger.error('result', JSON.stringify(result))
-      // const result1 = await helper.sendTransactionByRpc(result[`txObj`])
-      // console.log(result1)
+      const result1 = await helper.rpc.sendTransaction(result[`txObj`])
+      console.log(result1)
       // assert.strictEqual(result[`trxid`], `f50efd416df4a3bd9fde345186de6b56caa0f326`)
     } catch (err) {
       global.logger.error(err)

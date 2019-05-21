@@ -1,15 +1,16 @@
 import 'js-node-assist'
 import { PrivateKey, key, NodeClient, TransactionBuilder, TransactionHelper, ops } from '@pefish/hxjs'
-import { Apis } from 'bitsharesjs-ws'
-import HttpRequestUtil from 'js-httprequest'
-import ErrorHelper from 'p-js-error'
+import { Apis } from 'hxjs-ws'
+import Ws from './ws'
+import Rpc from './rpc'
 
 export default class Wallet {
 
   addressPrefix: string = `HX`
-  apisInstance: any
-  rpcUrl: string
+  ws: Ws
+  rpc: Rpc
   mainCurrencyDecimals: 5
+  chainId: string = `2e13ba07b457f2e284dcfcbd3d4a3e4d78a6ed89a61006cdb7fdad6d67ef0b12`
 
   getAllBySeedAndIndex (seed: string, index: number): object {
     const privateKeyObj = PrivateKey.fromSeed(seed + index)
@@ -30,73 +31,24 @@ export default class Wallet {
     }
   }
 
-  async connectWs (url: string): Promise<void> {
-    this.apisInstance = Apis.instance(url, true)
-    await this.apisInstance.init_promise
+  async initWs (url: string): Promise<void> {
+    this.ws = new Ws()
+    await this.ws.connect(url)
   }
 
-  setRpcUrl (url: string) {
-    this.rpcUrl = url
+  initRpc (url: string): void {
+    this.rpc = new Rpc(url)
   }
 
-  async closeWs (): Promise<void> {
-    this.apisInstance && await this.apisInstance.close()
+  decodeMemo (memoHex: string): string {
+    return TransactionHelper.hexToUtf8(memoHex)
   }
 
-  async callDbApi (method: string, params: Array<any>): Promise<any> {
-    return await this.apisInstance.db_api().exec(method, params)
-  }
-
-  async callNetworkApi (method: string, params: Array<any>): Promise<any> {
-    return await this.apisInstance.network_api().exec(method, params)
-  }
-
-  async callHistoryApi (method: string, params: Array<any>): Promise<any> {
-    return await this.apisInstance.history_api().exec(method, params)
-  }
-
-  async callCryptoApi (method: string, params: Array<any>): Promise<any> {
-    return await this.apisInstance.crypto_api().exec(method, params)
-  }
-
-  async callOrdersApi (method: string, params: Array<any>): Promise<any> {
-    return await this.apisInstance.orders_api().exec(method, params)
-  }
-
-  async callRpc (method: string, params: Array<any>): Promise<any> {
-    const result = await HttpRequestUtil.postJson(this.rpcUrl, null, { 'jsonrpc': '2.0', 'method': method, 'params': params, 'id': 1 })
-    if (result['error']) {
-      throw new ErrorHelper(result['error'])
-    }
-    return result[`result`]
-  }
-
-  /**
-   * 获取钱包内所有交易
-   * @returns {Promise<any>}
-   */
-  async listTransactions (afterBlockHeight: number, limit: number = -1): Promise<any> {
-    return await this.callRpc(`list_transactions`, [afterBlockHeight, limit])
-  }
-
-  getAssetIdByCurrency (currency: string): string {
-    if (currency === `HX`) {
-      return `1.3.0`
-    } else {
-      throw new ErrorHelper(`currency not be supported`)
-    }
-  }
-
-  async sendTransactionByRpc (txObj: object) {
-    return await this.callRpc(`lightwallet_broadcast`, [txObj])
-  }
-
-  async buildTransferTransaction (wif: string, toAddress: string, amount: string, currency: string, memo: string = ``, fee: string = `100`): Promise<object> {
+  async buildTransferTransaction (wif: string, toAddress: string, amount: string, assetId: string, memo: string = ``, fee: string = `100`): Promise<object> {
     const tr = new TransactionBuilder()
     const privKey = PrivateKey.fromWif(wif)
     const publicKeyObj = privKey.toPublicKey()
     const pubkey = publicKeyObj.toString()
-    const assetId = this.getAssetIdByCurrency(currency)
     const operation = {
       fee: {
         amount: fee,
@@ -122,11 +74,11 @@ export default class Wallet {
     tr.set_expire_seconds(60)
     tr.add_signer(privKey, pubkey)
 
-    const blockchainInfo = (await this.callRpc(`get_object`, ['2.1.0']))[0]
+    const blockchainInfo = (await this.rpc.callRpc(`get_object`, ['2.1.0']))[0]
     tr.ref_block_num = blockchainInfo['head_block_number'] & 0xFFFF
     tr.ref_block_prefix = new Buffer(blockchainInfo['head_block_id'], 'hex').readUInt32LE(4)
     tr.tr_buffer = ops.transaction.toBuffer(tr)
-    tr.sign()
+    tr.sign(this.chainId)
 
     const txObj = ops.signed_transaction.toObject(tr)
     return {

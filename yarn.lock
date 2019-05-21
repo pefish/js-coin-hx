@@ -103,14 +103,6 @@ bignumber.js@^8.1.1:
   resolved "https://registry.yarnpkg.com/bignumber.js/-/bignumber.js-8.1.1.tgz#4b072ae5aea9c20f6730e4e5d529df1271c4d885"
   integrity sha512-QD46ppGintwPGuL1KqmwhR0O+N2cZUg8JG/VzwI2e28sM9TqHjQB10lI4QAaMHVbLzwVLLAwEglpKPViWX+5NQ==
 
-bitsharesjs-ws@^1.5.5:
-  version "1.5.5"
-  resolved "https://registry.yarnpkg.com/bitsharesjs-ws/-/bitsharesjs-ws-1.5.5.tgz#7db62e3da5903a99f230cbeb3fdf0fe253bf262f"
-  integrity sha512-6kuc+s04+pWdEuJqJuWlZbEAiUTMPTbEf8JDPcRoBx/vOB/l4lCtjsPRuvBH2dulqdgqtNGs85jGsIbX5IAssA==
-  dependencies:
-    babel-plugin-add-module-exports "^0.2.1"
-    ws "4.1.0"
-
 brace-expansion@^1.1.7:
   version "1.1.11"
   resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-1.1.11.tgz#3c7fcbf529d87226f3d2f52b966ff5271eb441dd"
@@ -314,7 +306,7 @@ hash-base@^3.0.0:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
 
-hxjs-ws@1.5.5:
+hxjs-ws@1.5.5, hxjs-ws@^1.5.5:
   version "1.5.5"
   resolved "https://registry.yarnpkg.com/hxjs-ws/-/hxjs-ws-1.5.5.tgz#83006875123c0aea51e1baa6929d5fe9b95f87f8"
   integrity sha512-c+iOah8V/PUxnfIFB6aYrNidCGSeAjxo5SxIXoLr68Po4/7ytDz3lVPbnqMiP4hniX015A8Hix0Im00pCi7aMg==

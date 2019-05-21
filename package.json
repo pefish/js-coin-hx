@@ -1,6 +1,6 @@
 {
   "name": "js-coin-hx",
-  "version": "0.0.3",
+  "version": "0.0.7",
   "description": "hx tool of js",
   "keywords": [
     "common",
@@ -34,8 +34,8 @@
     "typescript": "^3.4.5"
   },
   "dependencies": {
-    "bitsharesjs-ws": "^1.5.5",
     "@pefish/hxjs": "^1.0.2",
+    "hxjs-ws": "^1.5.5",
     "js-httprequest": "^0.0.4",
     "js-node-assist": "^0.5.8",
     "p-js-error": "^0.0.4"
