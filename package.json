@@ -1,6 +1,6 @@
 {
   "name": "js-coin-hx",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "hx tool of js",
   "keywords": [
     "common",
@@ -38,6 +38,7 @@
     "hxjs-ws": "^1.5.5",
     "js-httprequest": "^0.0.4",
     "js-node-assist": "^0.5.8",
-    "p-js-error": "^0.0.4"
+    "p-js-error": "^0.0.4",
+    "web3-utils": "^1.0.0-beta.55"
   }
 }

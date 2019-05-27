@@ -3,6 +3,7 @@ import { PrivateKey, key, NodeClient, TransactionBuilder, TransactionHelper, ops
 import { Apis } from 'hxjs-ws'
 import Ws from './ws'
 import Rpc from './rpc'
+import * as web3Utils from 'web3-utils'
 
 export default class Wallet {
 
@@ -41,7 +42,7 @@ export default class Wallet {
   }
 
   decodeMemo (memoHex: string): string {
-    return TransactionHelper.hexToUtf8(memoHex)
+    return web3Utils.hexToUtf8(`0x${memoHex}`)
   }
 
   async buildTransferTransaction (wif: string, toAddress: string, amount: string, assetId: string, memo: string = ``, fee: string = `100`): Promise<object> {
