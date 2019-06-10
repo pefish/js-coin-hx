@@ -1,3 +1,4 @@
+import '@pefish/js-node-assist';
 export default class Rpc {
     rpcUrl: string;
     constructor(url: string);

@@ -1,6 +1,7 @@
+import '@pefish/js-node-assist'
 import { Apis } from 'hxjs-ws'
-import HttpRequestUtil from 'js-httprequest'
-import ErrorHelper from 'p-js-error'
+import HttpRequestUtil from '@pefish/js-util-httprequest'
+import ErrorHelper from '@pefish/js-error'
 
 export default class Rpc {
   rpcUrl: string

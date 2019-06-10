@@ -1,4 +1,4 @@
-import 'js-node-assist'
+import '@pefish/js-node-assist'
 import { PrivateKey, key, NodeClient, TransactionBuilder, TransactionHelper, ops } from '@pefish/hxjs'
 import { Apis } from 'hxjs-ws'
 import Ws from './ws'

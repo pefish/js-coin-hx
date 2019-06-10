@@ -1,4 +1,4 @@
-import 'js-node-assist';
+import '@pefish/js-node-assist';
 import Ws from './ws';
 import Rpc from './rpc';
 export default class Wallet {
