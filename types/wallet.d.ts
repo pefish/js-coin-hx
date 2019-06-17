@@ -12,5 +12,5 @@ export default class Wallet {
     initWs(url: string): Promise<void>;
     initRpc(url: string): void;
     decodeMemo(memoHex: string): string;
-    buildTransferTransaction(wif: string, toAddress: string, amount: string, assetId: string, memo?: string, fee?: string): Promise<object>;
+    buildTransferTransaction(wif: string, toAddress: string, amount: string, assetId: string, memo?: string, fee?: string, expireTime?: number): Promise<object>;
 }

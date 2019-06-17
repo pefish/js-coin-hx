@@ -45,7 +45,7 @@ export default class Wallet {
     return web3Utils.hexToUtf8(`0x${memoHex}`)
   }
 
-  async buildTransferTransaction (wif: string, toAddress: string, amount: string, assetId: string, memo: string = ``, fee: string = `100`): Promise<object> {
+  async buildTransferTransaction (wif: string, toAddress: string, amount: string, assetId: string, memo: string = ``, fee: string = `100`, expireTime: number = 60): Promise<object> {
     const tr = new TransactionBuilder()
     const privKey = PrivateKey.fromWif(wif)
     const publicKeyObj = privKey.toPublicKey()
@@ -72,7 +72,7 @@ export default class Wallet {
     }
 
     tr.add_type_operation(`transfer`, operation)
-    tr.set_expire_seconds(60)
+    tr.set_expire_seconds(expireTime)
     tr.add_signer(privKey, pubkey)
 
     const blockchainInfo = (await this.rpc.callRpc(`get_object`, ['2.1.0']))[0]
