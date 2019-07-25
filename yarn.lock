@@ -25,54 +25,32 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
-"@pefish/hxjs@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@pefish/hxjs/-/hxjs-1.0.2.tgz#c09197ffd0503a074145f43ad9fab8486e665571"
-  integrity sha512-vNNCXJvl1TMqIkE1uWmoZU0fKWMKXa5oGhCj2iitkWQ4B8NdqtLmFN441RlyyruVPXMm99TXPIeGfB0yoeHEpw==
-  dependencies:
-    bigi "1.4.2"
-    bs58 "4.0.1"
-    bytebuffer "5.0.1"
-    create-hash "1.2.0"
-    create-hmac "1.1.7"
-    crypto-js "3.1.9-1"
-    deep-equal "1.0.1"
-    ecurve "1.0.6"
-    event-emitter "0.3.5"
-    hxjs-ws "1.5.5"
-    immutable "3.8.2"
-    safe-buffer "^5.1.2"
-    secure-random "1.1.1"
+"@pefish/js-error@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@pefish/js-error/-/js-error-0.1.1.tgz#d3e6f4a1362206aaf73afd628465364c3a581ed2"
+  integrity sha512-JNLY0twr0fVEnGgrMetZsBZrStDGmHDX0dY9amDChTzVqrGEd6dvpzkR9BxINGhWgeAX6naTzI2FZn3ZwGlrsw==
 
-"@pefish/js-error@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@pefish/js-error/-/js-error-0.0.5.tgz#be50104cb7e6cb115a31ccdc55dafcf09a65a4ec"
-  integrity sha512-Eypll4OykI0EWj61wx8/cVMVldGjiPJVic/KzK76z1RZiNN9Q2TF7DJif+qg7MBlGbJHAQZ77wIBv5x9fndxpw==
-
-"@pefish/js-helper-assert@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@pefish/js-helper-assert/-/js-helper-assert-0.0.2.tgz#5adfb94e9308f1b825cf16e1982cf687b8775037"
-  integrity sha512-y37Tr+gLYOzSwiqMEGJT/TlnHBM+CeHhGNjpSKnXhu8dgPdNDY4c3G6/8rvu+M5NBhvoeM+fSHvmU/bqZ6H8Lg==
+"@pefish/js-node-assist@^0.6.6":
+  version "0.6.6"
+  resolved "https://registry.yarnpkg.com/@pefish/js-node-assist/-/js-node-assist-0.6.6.tgz#62673762c0dcc8ce3faf20c8bb777008fb69a084"
+  integrity sha512-IvdZCVDZXi2oc25XlKEHC7bCMaTNyDmYN+wPpcRQOEpa1A4JEsscIVWbw33zNMeKWuOfVWdFdJopgxwchRHx3A==
   dependencies:
-    bignumber.js "^8.1.1"
-    p-js-error "^0.0.4"
-
-"@pefish/js-node-assist@^0.6.2":
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/@pefish/js-node-assist/-/js-node-assist-0.6.2.tgz#2797e7a85bedfb96112d4a9cc92413a7cecd975a"
-  integrity sha512-cW5yL/kpJpQ74GE8SkEZuWhD+wgP/IBxA72i5s1K2iWTPtVxabVChZJ/sadOlj2QKsy1H+2Jjs382gvb4emziQ==
-  dependencies:
-    "@pefish/js-error" "^0.0.5"
-    "@pefish/js-helper-assert" "^0.0.2"
+    "@pefish/js-error" "^0.1.1"
     bignumber.js "^8.1.1"
 
-"@pefish/js-util-httprequest@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@pefish/js-util-httprequest/-/js-util-httprequest-0.0.5.tgz#1b4a4552a55dba26d792537f605470a3e741fb67"
-  integrity sha512-S+HFbkIR4KR0yCy5VR468R1BoAeCsb0dO5gfhcwLuCcdBw4GJ9UB24+O1Mt/xCyN8B7Rlh0B0mvX64xaGKhkpw==
+"@pefish/js-util-desensitize@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@pefish/js-util-desensitize/-/js-util-desensitize-0.0.3.tgz#83336a64d4be0e1c952e9799f3c0404bca8cee97"
+  integrity sha512-dYRZArm/4JWSnVEU2InLFmECfM6x88ix6qLPOJZQJp450FBsZDNvCaIIvPPQVqkZSeR5V6hDTxLd20INwnbXGw==
+
+"@pefish/js-util-httprequest@^0.0.9":
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/@pefish/js-util-httprequest/-/js-util-httprequest-0.0.9.tgz#f61dee924c1d5aed7b2ae3e15a844c867779c81c"
+  integrity sha512-ScP42h50wNG4srVDe2TEjm0nbeYr8HC1vN55z/WwQ/3AkhuMCS8eNTcVn6NlcN4YLtA7TF7etob3BiHcqw1KTA==
   dependencies:
-    js-node-assist "^0.5.8"
-    p-js-error "^0.0.4"
+    "@pefish/js-error" "^0.1.1"
+    "@pefish/js-node-assist" "^0.6.6"
+    "@pefish/js-util-desensitize" "^0.0.3"
     restler "^3.4.0"
 
 "@types/bn.js@^4.11.4":
@@ -570,24 +548,6 @@ is-symbol@^1.0.2:
   dependencies:
     has-symbols "^1.0.0"
 
-js-httprequest@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/js-httprequest/-/js-httprequest-0.0.4.tgz#3b9956b44064b6c9a87a97373931778a738d1b45"
-  integrity sha512-w09kTAMW8XqIzeJoRImzNd7UsWZ0mnNgE2zR0x2S87rtTK8/exunN69d1/LFlPE4VHve8pGebWG31bi0Ai6zEA==
-  dependencies:
-    js-node-assist "^0.5.8"
-    p-js-error "^0.0.4"
-    restler "^3.4.0"
-
-js-node-assist@^0.5.8:
-  version "0.5.8"
-  resolved "https://registry.yarnpkg.com/js-node-assist/-/js-node-assist-0.5.8.tgz#02f8a5d9d541eb4f4cc3edfc783af65e219a393d"
-  integrity sha512-zzaMQ8r3XnVFY8KvKgdXaHhRqm1rDJizdlE04Zktay58ObmiNNmUqCBSPSlABlQTiyza5wpSNIFHQLQqHrwl0g==
-  dependencies:
-    bignumber.js "^8.1.1"
-    p-js-assert "^0.0.1"
-    p-js-error "^0.0.4"
-
 js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
@@ -696,19 +656,6 @@ once@^1.3.0, once@^1.3.1:
   dependencies:
     wrappy "1"
 
-p-js-assert@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/p-js-assert/-/p-js-assert-0.0.1.tgz#20e263b6b4e6dec5edef8e2bc384749e11449c69"
-  integrity sha512-vnXZYvwcgPF9fVB9F2rA/a9iEpPZe5QpIJjqYljujBEOosS9R4GVaaXFRw6CKyYa/a7DJMGmDTMjsfh+IQW+bA==
-  dependencies:
-    bignumber.js "^8.1.1"
-    p-js-error "^0.0.4"
-
-p-js-error@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/p-js-error/-/p-js-error-0.0.4.tgz#ae7dbba4f998576012bb818227961b7961cc9902"
-  integrity sha512-voF6p/u1QP+7UMMqZLucmnXHN5JncAvyeKjlvGVRQ9HuFhIL/RBxZ0gN0g1UXaRNdsOorWNfnNHuTGKNMN7toA==
-
 parse-headers@^2.0.0:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/parse-headers/-/parse-headers-2.0.2.tgz#9545e8a4c1ae5eaea7d24992bca890281ed26e34"
@@ -726,6 +673,25 @@ path-parse@^1.0.6:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/path-parse/-/path-parse-1.0.6.tgz#d62dbb5679405d72c4737ec58600e9ddcf06d24c"
   integrity sha512-GSmOT2EbHrINBf9SR7CDELwlJ8AENk3Qn7OikK4nFYAu3Ote2+JYNVvkpAEQm3/TLNEJFD/xZJjzyxg3KBWOzw==
+
+pefish-hxjs@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/pefish-hxjs/-/pefish-hxjs-1.0.3.tgz#d2c47e28d2fec28330f80ec2caf2f6c805cd6e7e"
+  integrity sha512-sYuqL+EQ3ihw86sp2exs3ZminzW1B0RVdfnrCWzAZPvjulkU19cZRx6UzZW0XhlyUzc+iieBIyfWfnJDqFRUsw==
+  dependencies:
+    bigi "1.4.2"
+    bs58 "4.0.1"
+    bytebuffer "5.0.1"
+    create-hash "1.2.0"
+    create-hmac "1.1.7"
+    crypto-js "3.1.9-1"
+    deep-equal "1.0.1"
+    ecurve "1.0.6"
+    event-emitter "0.3.5"
+    hxjs-ws "1.5.5"
+    immutable "3.8.2"
+    safe-buffer "^5.1.2"
+    secure-random "1.1.1"
 
 process@~0.5.1:
   version "0.5.2"

@@ -12,10 +12,11 @@
     "outDir": "lib",
     "baseUrl": ".",
     "typeRoots": [
-      "node_modules/@types"
+      "node_modules/@types",
+      "node_modules/@pefish"
     ],
     "lib": [
-      "ES2015"
+      "es2015"
     ],
     "allowSyntheticDefaultImports": true,
     "emitDecoratorMetadata": true,

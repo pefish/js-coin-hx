@@ -1,6 +1,5 @@
 import '@pefish/js-node-assist'
-import { PrivateKey, key, NodeClient, TransactionBuilder, TransactionHelper, ops } from '@pefish/hxjs'
-import { Apis } from 'hxjs-ws'
+import { PrivateKey, TransactionBuilder, TransactionHelper, ops } from 'pefish-hxjs'
 import Ws from './ws'
 import Rpc from './rpc'
 import * as web3Utils from 'web3-utils'
