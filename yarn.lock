@@ -678,10 +678,10 @@ path-parse@^1.0.6:
   resolved "https://registry.yarnpkg.com/path-parse/-/path-parse-1.0.6.tgz#d62dbb5679405d72c4737ec58600e9ddcf06d24c"
   integrity sha512-GSmOT2EbHrINBf9SR7CDELwlJ8AENk3Qn7OikK4nFYAu3Ote2+JYNVvkpAEQm3/TLNEJFD/xZJjzyxg3KBWOzw==
 
-pefish-hxjs@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/pefish-hxjs/-/pefish-hxjs-1.0.4.tgz#6106a4303609b5abfc435ece1abe3c30b50abb96"
-  integrity sha512-Jkf2vmN+iXWdION95eX86jdEqp1qeox/L5ppQNg40PDrf7g1KJbwY865nhoELl43Ek6NUXy2NrXn8Vd24gFS3g==
+pefish-hxjs@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/pefish-hxjs/-/pefish-hxjs-1.0.5.tgz#331e6825535e6a443e481d09bc7c79fe75502fd2"
+  integrity sha512-b5yu3PkJo9QT9iJtWUuqdyc9duMZLHjyRvlKGoxXO8R+Icppl9kXP/1M+47njObDwsiszN+RRevutWTyprPXVg==
   dependencies:
     bigi "1.4.2"
     bs58 "4.0.1"
