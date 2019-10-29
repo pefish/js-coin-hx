@@ -1,6 +1,6 @@
 {
   "name": "@pefish/js-coin-hx",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "hx tool of js",
   "keywords": [
     "common",
@@ -34,9 +34,9 @@
     "typescript": "^3.4.5"
   },
   "dependencies": {
-    "@pefish/js-error": "^0.1.1",
-    "@pefish/js-node-assist": "^0.6.6",
-    "@pefish/js-util-httprequest": "^0.0.9",
+    "@pefish/js-error": "^0.1.2",
+    "@pefish/js-node-assist": "^0.6.11",
+    "@pefish/js-util-httprequest": "^0.0.11",
     "hxjs-ws": "^1.5.5",
     "pefish-hxjs": "^1.0.4",
     "web3-utils": "^1.0.0-beta.55"
